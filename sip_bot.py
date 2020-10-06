@@ -17,7 +17,10 @@ bot = commands.Bot(command_prefix='!')
 @bot.command(name='sip', help='Prefaces a description of the keyword with a big sip')
 async def sips(ctx, *keywords):
     key_phrase = ' '.join(keywords)
+    print('Request made for "' + key_phrase + '"') 
     description = wikipedia_grabber.get_description(key_phrase)
-    await ctx.send("*sips*\nNow there's " + description)
+    message = "*sips*\nNow there's " + description    
+    await ctx.send(message)
+    print('Successfully delivered the following message:\n\n' + message + '\n')
     
 bot.run(TOKEN)
