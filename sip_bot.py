@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # sip_bot.py - a bot that responds to messages by sipping
 
 import os
