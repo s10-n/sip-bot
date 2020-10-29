@@ -1,7 +1,6 @@
 # wikipedia_grabber.py - takes a string and grabs a description from the string's English-language wiki page
 
-import re
-import wikipedia
+import re,wikipedia
 
 def get_description(message_content):
 
@@ -14,7 +13,7 @@ def get_description(message_content):
     else:
         search_result = search_results[0]
         try:
-            wiki_description = wikipedia.summary(search_result)
+            wiki_description = wikipedia.summary(search_result,auto_suggest=False)
 
             # find the description in the first sentence of the paragraph and remove the conjugated form of "be"
             description = re.search(' was [^\.]+\.| are [^\.]+\.| were [^\.]+\.| is [^\.]+\.', wiki_description).group()
