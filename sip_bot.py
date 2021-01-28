@@ -13,7 +13,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 print('Token loaded.')
 
 # create the bot
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='!',help_command=None)
 print('Sip Bot successfully initiated.')
 
 # when a user calls the command !sip followed by a key phrase, the bot returns the description provided by get_description()
@@ -25,5 +25,10 @@ async def sips(ctx, *keywords):
     message = "*sips*\nNow there's " + description    
     await ctx.send(message)
     print('Successfully delivered the following message:\n\n' + message + '\n')
+
+# handle all other commands
+@bot.event
+async def on_command_error(ctx,error):
+    pass
     
 bot.run(TOKEN)
